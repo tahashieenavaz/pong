@@ -23,7 +23,7 @@ export default class Ball extends Animatable {
     const { PI } = Math
     this.ctx.beginPath()
     this.ctx.arc(this.x, this.y, this.radius, 0, PI * 2, false)
-    this.ctx.fillStyle = 'rgba(255,255,255, .8)'
+    this.ctx.fillStyle = 'rgba(255,255,255, .7)'
     this.ctx.fill()
     this.ctx.beginPath()
   }
@@ -32,22 +32,22 @@ export default class Ball extends Animatable {
     this.draw()
 
     if (this.y < this.radius) {
-      this.direction.y *= -1
+      this.direction.reverse('y')
     }
 
     if (this.y > innerHeight) {
-      this.direction.y *= -1
+      this.direction.reverse('y')
     }
 
     if (this.x < this.radius + Settings.padding + Settings.needleWidth) {
-      this.direction.x *= -1
+      this.direction.reverse('x')
     }
 
     if (
       this.x >
       innerWidth - this.radius - Settings.padding - Settings.needleWidth
     ) {
-      this.direction.x *= -1
+      this.direction.reverse('x')
     }
 
     this.x += this.direction.x * this.speed

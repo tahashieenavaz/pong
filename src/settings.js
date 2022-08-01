@@ -1,4 +1,4 @@
 export default {
   padding: 20,
-  needleWidth: 10,
+  needleWidth: 10
 }
