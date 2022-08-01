@@ -1,6 +1,6 @@
 import Animatable from '@/classes/Animatable'
 import Settings from '@/settings'
-import { listen } from '@/functions'
+import { listen, after } from '@/functions'
 
 export default class Needle extends Animatable {
   constructor(ctx, side = 'right', syncWithMouse = false) {
@@ -41,6 +41,10 @@ export default class Needle extends Animatable {
 
   lost() {
     this.score = this.score - Settings.needleSizeDecreaseForALoss
+    this.color = 'rgba(135, 0, 0, .8)'
+    after(2000, () => {
+      this.color = 'white'
+    })
   }
 
   mouseMoveHandler = (e) => {
