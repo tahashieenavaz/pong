@@ -1,7 +1,7 @@
 import Animatable from '@/classes/Animatable'
 import Direction from '@/classes/Direction'
 import Settings from '@/settings'
-import { randomElement } from '@/functions'
+import { randomElement, didUserGrabbedTheBall } from '@/functions'
 
 export default class Ball extends Animatable {
   constructor(ctx) {
@@ -30,9 +30,6 @@ export default class Ball extends Animatable {
 
   update() {
     this.draw()
-    if (this.x < this.radius + Settings.padding + Settings.needleWidth) {
-      this.direction.x *= -1
-    }
 
     if (this.y < this.radius) {
       this.direction.y *= -1
@@ -40,6 +37,10 @@ export default class Ball extends Animatable {
 
     if (this.y > innerHeight) {
       this.direction.y *= -1
+    }
+
+    if (this.x < this.radius + Settings.padding + Settings.needleWidth) {
+      if (didUserGrabbedTheBall()) this.direction.x *= -1
     }
 
     if (
