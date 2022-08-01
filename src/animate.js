@@ -10,5 +10,9 @@ export default function animate(ctx, { userNeedle, pcNeedle, ball }) {
 
   pcNeedle.y = ball.y
 
+  if (pcNeedle.y > innerHeight - pcNeedle.height) {
+    pcNeedle.y = innerHeight - pcNeedle.height
+  }
+
   ball.update()
 }
