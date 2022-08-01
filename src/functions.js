@@ -8,5 +8,3 @@ export const $$ = document.querySelectorAll.bind(document)
 
 export const randomElement = (targetArray) =>
   targetArray[~~(random() * targetArray.length)]
-
-export function didUserGrabbedTheBall() {}
