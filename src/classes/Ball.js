@@ -39,18 +39,34 @@ export default class Ball extends Animatable {
       this.direction.reverse('y')
     }
 
-    if (this.x < this.radius + Settings.padding + Settings.needleWidth) {
-      this.direction.reverse('x')
-    }
-
-    if (
-      this.x >
-      innerWidth - this.radius - Settings.padding - Settings.needleWidth
-    ) {
+    if (this.isCollidingSide('right') || this.isCollidingSide('left')) {
       this.direction.reverse('x')
     }
 
     this.x += this.direction.x * this.speed
     this.y += this.direction.y * this.speed
+  }
+
+  isCollidingSide(sideName = 'left') {
+    if (sideName === 'right') {
+      return this.isCollidingRight()
+    }
+
+    if (sideName === 'left') {
+      return this.isCollidingLeft()
+    }
+
+    return false
+  }
+
+  isCollidingLeft() {
+    return this.x < this.radius + Settings.padding + Settings.needleWidth
+  }
+
+  isCollidingRight() {
+    return (
+      this.x >
+      innerWidth - this.radius - Settings.padding - Settings.needleWidth
+    )
   }
 }

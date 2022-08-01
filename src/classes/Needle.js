@@ -10,7 +10,12 @@ export default class Needle extends Animatable {
     this.color = 'white'
     this.side = side
     this.y = innerHeight / 2
+    this.score = 0
     if (syncWithMouse) listen('canvas', 'mousemove', this.mouseMoveHandler)
+  }
+
+  calculateHeight() {
+    return this.height + this.score
   }
 
   draw() {
@@ -22,12 +27,20 @@ export default class Needle extends Animatable {
       x = innerWidth - Settings.padding - Settings.needleWidth
     }
 
-    this.ctx.fillRect(x, this.y, this.width, this.height)
+    this.ctx.fillRect(x, this.y, this.width, this.calculateHeight())
     this.ctx.closePath()
   }
 
   update() {
     this.draw()
+  }
+
+  isInRange(topY, bottomY) {
+    return topY > this.y && bottomY < this.y + this.calculateHeight()
+  }
+
+  lost() {
+    this.score = this.score - Settings.needleSizeDecreaseForALoss
   }
 
   mouseMoveHandler = (e) => {
