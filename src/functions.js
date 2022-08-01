@@ -1,13 +1,5 @@
-export function path(ctx, callback, options) {
-  ctx.beginPath()
-  callback(ctx)
-  if (options.hasOwnProperty('fill')) {
-    ctx.fillStyle = options['fill']
-    ctx.fill()
-  }
-  if (options.hasOwnProperty('stroke')) {
-    ctx.strokeStyle = options['stroke']
-    ctx.stroke()
-  }
-  ctx.closePath()
-}
+export const listen = (s, e, c) => $(s).addEventListener(e, c)
+export const forget = (s, e, c) => $(s).removeEventListener(e, c)
+export const $ = document.querySelector.bind(document)
+export const $$ = document.querySelectorAll.bind(document)
+export const randomElement()
