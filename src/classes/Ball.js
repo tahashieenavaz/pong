@@ -1,5 +1,7 @@
 import Animatable from '@/classes/Animatable'
+import Direction from '@/classes/Direction'
 import Settings from '@/settings'
+import { randomElement } from '@/functions'
 
 export default class Ball extends Animatable {
   constructor(ctx) {
@@ -7,8 +9,14 @@ export default class Ball extends Animatable {
     this.radius = 10
     this.x = innerWidth / 2
     this.y = innerHeight / 2
+    this.speed = 10
 
-    this.direction = new Direction()
+    const availableDirections = [-1, 1]
+
+    this.direction = new Direction(
+      randomElement(availableDirections),
+      randomElement(availableDirections)
+    )
   }
 
   draw() {
@@ -22,5 +30,26 @@ export default class Ball extends Animatable {
 
   update() {
     this.draw()
+    if (this.x < this.radius + Settings.padding + Settings.needleWidth) {
+      this.direction.x *= -1
+    }
+
+    if (this.y < this.radius) {
+      this.direction.y *= -1
+    }
+
+    if (this.y > innerHeight) {
+      this.direction.y *= -1
+    }
+
+    if (
+      this.x >
+      innerWidth - this.radius - Settings.padding - Settings.needleWidth
+    ) {
+      this.direction.x *= -1
+    }
+
+    this.x += this.direction.x * this.speed
+    this.y += this.direction.y * this.speed
   }
 }
