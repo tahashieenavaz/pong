@@ -7,7 +7,8 @@ import animate from '@/animate'
 
 const canvas = new Canvas()
 const element = canvas.element()
-const ctx = element.getContext('2d')
+const ctx = canvas.context()
+
 document.body.appendChild(element)
 
 const userNeedle = new Needle(ctx, 'left', true)

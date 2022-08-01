@@ -1,11 +1,16 @@
 export default class Canvas {
+  constructor() {
+    this.canvas = document.createElement('canvas')
+
+    this.canvas.width = innerWidth
+    this.canvas.height = innerHeight
+  }
+
+  context() {
+    return this.canvas.getContext('2d')
+  }
+
   element() {
-    const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
-
-    canvas.width = innerWidth
-    canvas.height = innerHeight
-
-    return canvas
+    return this.canvas
   }
 }
