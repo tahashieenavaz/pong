@@ -1,6 +1,7 @@
 {
   "name": "pong",
   "private": true,
+  "description": "I have re-created the old Pong game with HTML5 Canvas API to add to it to my portfolio.", 
   "version": "0.0.0",
   "type": "module",
   "scripts": {
