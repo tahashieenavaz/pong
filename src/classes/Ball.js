@@ -26,7 +26,7 @@ export default class Ball extends Animatable {
     this.ctx.arc(this.x, this.y, this.radius, 0, PI * 2, false)
     this.ctx.fillStyle = 'rgba(255,255,255, .7)'
     this.ctx.fill()
-    this.ctx.beginPath()
+    this.ctx.closePath()
   }
 
   update() {
