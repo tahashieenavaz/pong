@@ -1,6 +1,7 @@
 import Animatable from '@/classes/Animatable'
 import Direction from '@/classes/Direction'
 import Settings from '@/settings'
+
 import { randomElement } from '@/functions'
 
 export default class Ball extends Animatable {

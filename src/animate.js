@@ -21,22 +21,16 @@ export default function animate(ctx, { userNeedle, pcNeedle, ball }) {
     !userNeedle.isInRange(ball.y - ball.radius, ball.y + ball.radius)
   ) {
     userNeedle.lost()
-  }
-
-  if (
+  } else if (
     ball.isCollidingSide('right') &&
     !pcNeedle.isInRange(ball.y - ball.radius, ball.y + ball.radius)
   ) {
     pcNeedle.lost()
   }
 
+  if (pcNeedle.isInRange(ball.y - ball.radius, ball.y + ball.radius)) {
+    console.log('Something')
+  }
+
   // Checking for the winner
-
-  if (pcNeedle.calculateHeight() <= 0) {
-    alert('The user has won')
-  }
-
-  if (userNeedle.calculateHeight() <= 0) {
-    alert('The pc has won')
-  }
 }
