@@ -8,7 +8,6 @@ export default class Canvas {
   setSize() {
     this.canvas.width = innerWidth
     this.canvas.height = innerHeight
-    console.log('setting size')
   }
 
   context() {

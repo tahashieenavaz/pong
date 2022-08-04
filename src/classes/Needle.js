@@ -62,12 +62,12 @@ export default class Needle extends Animatable {
   }
 
   mouseMoveHandler = (e) => {
-    this.y = e.y - this.height / 2
+    this.y = e.y - this.calculateHeight() / 2
     if (this.y < 0) {
       this.y = 0
     }
-    if (this.y > innerHeight - this.height) {
-      this.y = innerHeight - this.height
+    if (this.y > innerHeight - this.calculateHeight()) {
+      this.y = innerHeight - this.calculateHeight()
     }
   }
 }
