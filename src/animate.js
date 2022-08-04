@@ -1,32 +1,36 @@
-export default function animate(ctx, { userNeedle, pcNeedle, ball }) {
+export default function animate(
+  ctx,
+  { userNeedle, pcNeedle, ball, userScore, pcScore }
+) {
+  const { random } = Math
   ctx.clearRect(0, 0, innerWidth, innerHeight)
 
   requestAnimationFrame(() => {
-    animate(ctx, { userNeedle, pcNeedle, ball })
+    animate(ctx, { userScore, pcScore, userNeedle, pcNeedle, ball })
   })
 
   userNeedle.update()
   pcNeedle.update()
 
-  pcNeedle.y = ball.y
+  // Artificial Intelligence !!!
+  pcNeedle.y = ball.y - pcNeedle.calculateHeight() / 2
 
-  if (pcNeedle.y > innerHeight - pcNeedle.height) {
-    pcNeedle.y = innerHeight - pcNeedle.height
+  if (pcNeedle.y > innerHeight - pcNeedle.calculateHeight()) {
+    pcNeedle.y = innerHeight - pcNeedle.calculateHeight()
   }
 
   ball.update()
 
-  if (
-    ball.isCollidingSide('left') &&
-    !userNeedle.isInRange(ball.y - ball.radius, ball.y + ball.radius)
-  ) {
+  if (ball.isCollidingSide('left') && !userNeedle.isTouchingBall(ball)) {
     userNeedle.lost()
-  } else if (
-    ball.isCollidingSide('right') &&
-    !pcNeedle.isInRange(ball.y - ball.radius, ball.y + ball.radius)
-  ) {
+    pcScore.inc()
+  } else if (ball.isCollidingSide('right') && !pcNeedle.isTouchingBall(ball)) {
     pcNeedle.lost()
+    userScore.inc()
   }
+
+  userScore.update()
+  pcScore.update()
 
   // Checking for the winner
 }

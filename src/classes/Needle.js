@@ -39,8 +39,17 @@ export default class Needle extends Animatable {
     return topY > this.y && bottomY < this.y + this.calculateHeight()
   }
 
-  isTouchingBall(ballInstance) {
-    return this.isInRange()
+  isTouchingBall(ball) {
+    const ballBottomPoint = ball.y + ball.radius
+    const ballTopPoint = ball.y - ball.radius
+
+    const firstCondition =
+      ballBottomPoint > this.y &&
+      ballBottomPoint < this.y + this.calculateHeight()
+    const secondCondition =
+      ballTopPoint < this.y + this.calculateHeight() && ballTopPoint > this.y
+
+    return firstCondition || secondCondition
   }
 
   lost() {
