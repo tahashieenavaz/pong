@@ -28,9 +28,5 @@ export default function animate(ctx, { userNeedle, pcNeedle, ball }) {
     pcNeedle.lost()
   }
 
-  if (pcNeedle.isInRange(ball.y - ball.radius, ball.y + ball.radius)) {
-    console.log('Something')
-  }
-
   // Checking for the winner
 }

@@ -5,12 +5,12 @@ import { listen, after } from '@/functions'
 export default class Needle extends Animatable {
   constructor(ctx, side = 'right', syncWithMouse = false) {
     super(ctx)
+    this.score = 0
     this.width = Settings.needleWidth
     this.height = 200
     this.color = 'white'
     this.side = side
     this.y = innerHeight / 2
-    this.score = 0
     if (syncWithMouse) listen('canvas', 'mousemove', this.mouseMoveHandler)
   }
 
@@ -39,9 +39,14 @@ export default class Needle extends Animatable {
     return topY > this.y && bottomY < this.y + this.calculateHeight()
   }
 
+  isTouchingBall(ballInstance) {
+    return this.isInRange()
+  }
+
   lost() {
     this.score = this.score - Settings.needleSizeDecreaseForALoss
     this.color = 'rgba(135, 0, 0, .8)'
+
     after(2000, () => {
       this.color = 'white'
     })
