@@ -11,7 +11,14 @@ export default class Needle extends Animatable {
     this.color = 'white'
     this.side = side
     this.y = innerHeight / 2
-    if (syncWithMouse) listen('canvas', 'mousemove', this.mouseMoveHandler)
+    if (syncWithMouse) {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      if (isMobile) {
+        listen('canvas', 'touchmove', this.mouseMoveHandler)
+      } else {
+        listen('canvas', 'mousemove', this.mouseMoveHandler)
+      }
+    }
   }
 
   calculateHeight() {
