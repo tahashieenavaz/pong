@@ -1,12 +1,14 @@
 export default function animate(
   ctx,
-  { userNeedle, pcNeedle, ball, userScore, pcScore }
+  { userNeedle, pcNeedle, ball, userScore, pcScore, canvas }
 ) {
   const { random } = Math
-  ctx.clearRect(0, 0, innerWidth, innerHeight)
+
+  // ctx.clearRect(0, 0, innerWidth, innerHeight)
+  canvas.paintBackground()
 
   requestAnimationFrame(() => {
-    animate(ctx, { userScore, pcScore, userNeedle, pcNeedle, ball })
+    animate(ctx, { userScore, pcScore, userNeedle, pcNeedle, ball, canvas })
   })
 
   userNeedle.update()

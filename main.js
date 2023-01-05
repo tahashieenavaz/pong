@@ -27,8 +27,10 @@ const ball = new Ball(ctx)
 const userScore = new Score(ctx, 0)
 const pcScore = new Score(ctx, 0, 'right')
 
-animate(ctx, { ball, userNeedle, pcNeedle, userScore, pcScore })
+// Running our infinite loop
+animate(ctx, { canvas, ball, userNeedle, pcNeedle, userScore, pcScore })
 
+// Adding an event listener for window resize, otherwise canvas element wouldn't fit into page
 addEventListener('resize', () => {
   canvas.setSize()
 })
