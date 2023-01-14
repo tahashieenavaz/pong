@@ -1,9 +1,10 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 body {
-	background: #222;
-	overflow: hidden;
+  background: #222;
+  transition: background 300ms forwards;
+  overflow: hidden;
 }

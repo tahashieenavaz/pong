@@ -18,11 +18,15 @@ export const $$ = document.querySelectorAll.bind(document)
 /**
  * Given we have an array of elements and want to pick a random element. This function helps up
  */
-export const randomElement = (targetArray) =>
-  targetArray[~~(random() * targetArray.length)]
+export const oneOf = (arr) => arr[~~(random() * arr.length)]
 
 /**
  * Refactoring setTimeout function to a more readable function
  */
 export const after = (t, c) => setTimeout(c, t)
-export const repeat = (t, c) => setInterval(c, t)
+export const repeat = (t, c, condition = () => false) => {
+  const intervalId = setInterval(() => {
+    c()
+    if (condition()) clearInterval(intervalId)
+  }, t)
+}

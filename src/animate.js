@@ -1,11 +1,10 @@
+import Canvas from '@/classes/Canvas'
+
 export default function animate(
   ctx,
   { userNeedle, pcNeedle, ball, userScore, pcScore, canvas }
 ) {
-  const { random } = Math
-
-  // ctx.clearRect(0, 0, innerWidth, innerHeight)
-  canvas.paintBackground()
+  ctx.clearRect(0, 0, innerWidth, innerHeight)
 
   requestAnimationFrame(() => {
     animate(ctx, { userScore, pcScore, userNeedle, pcNeedle, ball, canvas })
@@ -33,6 +32,8 @@ export default function animate(
 
   userScore.update()
   pcScore.update()
+
+  Canvas.counter++
 
   // Checking for the winner
 }

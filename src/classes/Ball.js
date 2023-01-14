@@ -2,7 +2,7 @@ import Animatable from '@/classes/Animatable'
 import Direction from '@/classes/Direction'
 import Settings from '@/settings'
 
-import { randomElement } from '@/functions'
+import { oneOf } from '@/functions'
 
 export default class Ball extends Animatable {
   constructor(ctx) {
@@ -15,8 +15,8 @@ export default class Ball extends Animatable {
     const availableDirections = [-1, 1]
 
     this.direction = new Direction(
-      randomElement(availableDirections),
-      randomElement(availableDirections)
+      oneOf(availableDirections),
+      oneOf(availableDirections)
     )
   }
 

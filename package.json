@@ -1,15 +1,17 @@
 {
   "name": "pong",
   "private": true,
-  "description": "I have re-created the old Pong game with HTML5 Canvas API in order to add it to my portfolio.", 
+  "description": "I have re-created the old Pong game with HTML5 Canvas API in order to add it to my portfolio.",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "vite": "^3.0.0"
   }
 }
