@@ -1,4 +1,5 @@
 import Canvas from '@/classes/Canvas'
+import { rand } from '@/functions'
 
 export default function animate(
   ctx,
@@ -14,7 +15,7 @@ export default function animate(
   pcNeedle.update()
 
   // Artificial Intelligence !!!
-  pcNeedle.y = ball.y - pcNeedle.calculateHeight() / 2
+  pcNeedle.y = (ball.y - pcNeedle.calculateHeight() / 2) * Canvas.errorCoef
 
   if (pcNeedle.y > innerHeight - pcNeedle.calculateHeight()) {
     pcNeedle.y = innerHeight - pcNeedle.calculateHeight()
@@ -33,7 +34,7 @@ export default function animate(
   userScore.update()
   pcScore.update()
 
-  Canvas.counter++
-
-  // Checking for the winner
+  if (Canvas.counter++ % 777 === 213) {
+    Canvas.errorCoef = (Math.random() * 15 + 80) / 100
+  }
 }

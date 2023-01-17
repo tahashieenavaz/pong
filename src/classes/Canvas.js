@@ -2,6 +2,7 @@ import { after, color, repeat } from '@/functions'
 
 export default class Canvas {
   static counter = 0
+  static errorCoef = 99 / 100
 
   constructor() {
     this.canvas = document.createElement('canvas')
