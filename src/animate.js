@@ -34,7 +34,8 @@ export default function animate(
   userScore.update()
   pcScore.update()
 
-  if (Canvas.counter++ % 777 === 213) {
-    Canvas.errorCoef = (Math.random() * 15 + 80) / 100
+  if (Canvas.counter++ % 877 === 13) {
+    Canvas.errorCoef = (Math.random() * 25 + 70) / 100
+    console.log(Canvas.errorCoef)
   }
 }
